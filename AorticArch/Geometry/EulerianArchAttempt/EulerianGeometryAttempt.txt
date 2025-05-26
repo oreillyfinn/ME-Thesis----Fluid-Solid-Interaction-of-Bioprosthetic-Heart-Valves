@@ -1,0 +1,1 @@
+This 'AorticArch.scdoc' model is an attempt at creating a nicer overlapping aortic arch Eulerian geometry. For this to function in Abaqus as an Eulerian part, it must be meshed hexahedrally which I ran into trouble doing.

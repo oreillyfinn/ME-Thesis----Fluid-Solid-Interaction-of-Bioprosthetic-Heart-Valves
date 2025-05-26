@@ -1,0 +1,1 @@
+A selection of geometry files of a modified version of the Aortic Annulus which I was unable to get into Abaqus meshed as a 3D part. A skirt is added to the inlet of the annulus to create an entrance region for applying an easier Eulerian inlet domain. 

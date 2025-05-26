@@ -1,0 +1,49 @@
+# -*- coding: mbcs -*-
+from part import *
+from material import *
+from section import *
+from assembly import *
+from step import *
+from interaction import *
+from load import *
+from mesh import *
+from optimization import *
+from job import *
+from sketch import *
+from visualization import *
+from connectorBehavior import *
+del mdb.models['ETubeNeoHookean1']
+del mdb.models['LH_Aorta-Eulerianfit']
+del mdb.models['LH_Aorta__OuterContact']
+del mdb.models['LH_Mechanical_Analysis']
+del mdb.models['LH_Aorta__mmProperties__twocycles_2']
+del mdb.models['LH_Aorta__ScaledGeometry']
+del mdb.models['LH_Aorta__ZeroVelocity']
+del mdb.models['LH_Aorta__ZeroVelocity-secorder']
+del mdb.models['LH_Aorta__ZeroVelocity2']
+del mdb.models['LH_Aorta__mmProperties']
+del mdb.models['LH_Aorta__mmProperties__twocycles']
+mdb.Job(name='AorticArch', objectToCopy=mdb.jobs['AorticArch8_ZeroVelocity'])
+mdb.jobs['AorticArch'].setValues(model='LH_Aorta__FinalModel')
+del mdb.jobs['AorticArch1']
+del mdb.jobs['AorticArch2_velocity_mms']
+del mdb.jobs['AorticArch3_ScaledMats']
+del mdb.jobs['AorticArch4_twocycles']
+del mdb.jobs['AorticArch5_ScaledGeometry']
+del mdb.jobs['AorticArch6_5_VelocityInletRedefine_FixedP0']
+del mdb.jobs['AorticArch6_VelocityInletRedefine']
+del mdb.jobs['AorticArch7_OuterContact_FixedP0']
+del mdb.jobs['AorticArch8_ZeroVelocity']
+del mdb.jobs['AorticArch9_ZeroVelocity2']
+del mdb.jobs['AorticArch10_ZeroVelocitysecorder']
+mdb.models['LH_Aorta'].Part(name='ARoot-Copy', objectToCopy=
+    mdb.models['LH_Aorta'].parts['ARoot'])
+del mdb.models['LH_Aorta'].parts['ARoot-Copy']
+mdb.openAcis('C:/Users/Finn/MyDrive_UCD/Thesis/Abaqus/Aorta/Arch/ARoot.sat', 
+    scaleFromFile=OFF)
+mdb.models['LH_Aorta__FinalModel'].PartFromGeometryFile(combine=False, 
+    dimensionality=THREE_D, geometryFile=mdb.acis, name='ArchEulerianTest', 
+    type=EULERIAN)
+del mdb.models['LH_Aorta__FinalModel'].parts['ArchEulerianTest']
+del mdb.models['LH_Aorta']
+# Save by Finn on 2025_05_26-11.58.40; build 2023 2022_09_28-19.11.55 183150
